@@ -3,7 +3,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {motion} from 'framer-motion'
 import { useDispatch } from 'react-redux';
-import {  signUp } from '../../../Store/Authciation/Authslice';
+import { signUp } from '../../../Store/Authciation/Authslice';
+
 const SignupForm = () => {
   const dispatch = useDispatch()
 

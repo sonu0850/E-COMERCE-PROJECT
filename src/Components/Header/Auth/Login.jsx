@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import {motion} from 'framer-motion'
 
 const LogIn = () => {
+ 
   const formik = useFormik({
     initialValues: {
      
