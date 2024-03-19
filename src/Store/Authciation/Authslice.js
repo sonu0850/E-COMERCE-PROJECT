@@ -29,7 +29,7 @@ export const  login =createAsyncThunk("/authSlice/login",async(value)=>{
  try{
     const response  = await axios.post('http://localhost:8080/users/login'+value, )
     if (response.status===200) {
-        
+
         return response.data
         
     } else {
@@ -48,7 +48,7 @@ export const  login =createAsyncThunk("/authSlice/login",async(value)=>{
  const authSlice = createSlice({
     name:"authSlice",
     initialState:{
-        Data:[],
+        Dataaaa:[],
         loading: false
     },
     extraReducers(builder){
