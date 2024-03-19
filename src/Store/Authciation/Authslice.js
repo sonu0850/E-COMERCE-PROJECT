@@ -48,7 +48,7 @@ export const  login =createAsyncThunk("/authSlice/login",async(value)=>{
  const authSlice = createSlice({
     name:"authSlice",
     initialState:{
-        Dataaaa:[],
+        Data:[],
         loading: false
     },
     extraReducers(builder){
