@@ -1,0 +1,10 @@
+*{
+  font-family: 'Courier New', Courier, monospace;}
+
+  input{
+    background-color: rgba(238, 234, 234, 0.301);
+  }
+
+  img{
+    mix-blend-mode: color;
+  }
