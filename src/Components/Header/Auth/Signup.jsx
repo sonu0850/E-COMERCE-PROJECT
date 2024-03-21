@@ -14,7 +14,7 @@ const SignupForm = () => {
       lastName: '',
       email: '',
       password: '',
-      confirm_password: '',
+     
     },
     validationSchema: Yup.object({
       firstName: Yup.string()

@@ -3,8 +3,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import {motion} from 'framer-motion'
+import { useDispatch } from 'react-redux';
+import { Login } from '../../../Store/Authciation/Authslice';
+
 
 const LogIn = () => {
+  const disptach = useDispatch()
  
   const formik = useFormik({
     initialValues: {
@@ -25,6 +29,7 @@ const LogIn = () => {
     onSubmit: values => {
       console.log(values);
       console.log("value", values);
+      disptach(Login(values))
     },
   });
 

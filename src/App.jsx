@@ -9,13 +9,18 @@ import LogIn from './Components/Header/Auth/Login'
 import Navbartwo from './Components/Header/Header/Navbartwo'
 import Contact from './Components/Header/Dashboard/Contact'
 import About from './Components/Header/Dashboard/About'
+import TostifyContainer from './Service/http/Toasify/TostifyContainer'
+
 
 function App() {
+ 
  
 
   return (
  <>
- {/* <Navbartwo/> */}
+
+<TostifyContainer/>
+
  <Navbar/>
  <Routes>
 <Route path='/Login' element={<LogIn/>}/>
