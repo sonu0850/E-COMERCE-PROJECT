@@ -16,9 +16,7 @@ export const  signUp=createAsyncThunk("/authSlice/signUp",async(value)=>{
         return response.data
         
     } else {
-        if(response.status===400){
-            Toastify({value:false, msg:response.data.message})
-        }
+       
         
         
        
@@ -96,16 +94,24 @@ export const  Login=createAsyncThunk("/authSlice/Login",async(value)=>{
         })
         .addCase(Login.fulfilled,(state,action)=>{
            console.log("fullfiled", action);
+           if (action.payload.success ===true) {
+            Toastify({value:true, msg:action.payload.message})
+            
+        } else {
+            Toastify({value:false, msg:action.payload.message})
+            
+        }
+        state.loading = false
 
 
         })
         .addCase(Login.rejected,(state,action)=>{
-            state.loading= true
+            state.loading= false
 
         })
         
     }
 
-})
+}) 
 
 export default authSlice.reducer

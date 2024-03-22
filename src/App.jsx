@@ -10,6 +10,10 @@ import Navbartwo from './Components/Header/Header/Navbartwo'
 import Contact from './Components/Header/Dashboard/Contact'
 import About from './Components/Header/Dashboard/About'
 import TostifyContainer from './Service/http/Toasify/TostifyContainer'
+import Skeleton from 'react-loading-skeleton'
+import Skeltont from './Service/http/Toasify/Skeleten Loader/Skeleten'
+// import 'react-loading-skeleton/dist/skeleton.css'
+
 
 
 function App() {
@@ -20,6 +24,9 @@ function App() {
  <>
 
 <TostifyContainer/>
+
+{/* <Skeleton count={10} /> */}
+<Skeltont/>
 
  <Navbar/>
  <Routes>
