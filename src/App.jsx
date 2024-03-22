@@ -10,8 +10,9 @@ import Navbartwo from './Components/Header/Header/Navbartwo'
 import Contact from './Components/Header/Dashboard/Contact'
 import About from './Components/Header/Dashboard/About'
 import TostifyContainer from './Service/http/Toasify/TostifyContainer'
-import Skeleton from 'react-loading-skeleton'
-import Skeltont from './Service/http/Toasify/Skeleten Loader/Skeleten'
+import { Suspense } from 'react'
+import RouteGuard from './Service/http/Routeguard/Routeguard'
+
 // import 'react-loading-skeleton/dist/skeleton.css'
 
 
@@ -24,19 +25,22 @@ function App() {
  <>
 
 <TostifyContainer/>
+<RouteGuard/>
 
 {/* <Skeleton count={10} /> */}
-<Skeltont/>
+{/* <Skeltont/> */}
 
  <Navbar/>
- <Routes>
+<Suspense fallback={'loading....'}>
+<Routes>
+<Route path='/' element={<RouteGuard Component={Home}/>}/>
+<Route path='/contact' element={<RouteGuard Component={Contact}/>}/>
+<Route path='/About' element={<RouteGuard Component={About}/>}/>
 <Route path='/Login' element={<LogIn/>}/>
-<Route path='/contact' element={<Contact/>}/>
-<Route path='/About' element={<About/>}/>
 <Route path='/Signup' element={<SignupForm/>}/>
-<Route path='/' element={<Home/>}/>
 
  </Routes>
+</Suspense>
  </>
   )
 }

@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import http from '../../Service/http/base_url'
 
 import  { Toastify } from "../../Service/http/Toasify/TostifyContainer";
 
 export const  signUp=createAsyncThunk("/authSlice/signUp",async(value)=>{
     console.log("sign val ", value);
  try{
-    const response  = await axios.post('http://localhost:8080/users/register',value);
+    const response  = await http.post('/users/register',value);
     console.log("response", response);
    
  
@@ -35,7 +36,7 @@ export const  signUp=createAsyncThunk("/authSlice/signUp",async(value)=>{
 export const  Login=createAsyncThunk("/authSlice/Login",async(value)=>{
     console.log("sign val ", value);
  try{
-    const response  = await axios.post('http://localhost:8080/users/login',value)
+    const response  = await http.post('/users/login',value)
     if (response.status===200) {
         return response.data
         

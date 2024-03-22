@@ -1,13 +1,14 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion'
 import { useDispatch } from 'react-redux';
 import { Login } from '../../../Store/Authciation/Authslice';
 
 
 const LogIn = () => {
+  const navigate = useNavigate()
   const disptach = useDispatch()
  
   const formik = useFormik({
@@ -29,7 +30,15 @@ const LogIn = () => {
     onSubmit: values => {
       console.log(values);
       console.log("value", values);
-      disptach(Login(values))
+      disptach(Login(values)).unwrap().then((res)=>{
+        console.log("unwarp", res);
+        if (res.success ===true) {
+navigate('/')  
+localStorage.setItem('token', res.token)        
+        } else {
+          
+        }
+      })
     },
   });
 
