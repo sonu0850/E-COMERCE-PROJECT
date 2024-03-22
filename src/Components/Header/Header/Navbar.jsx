@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import amazon from '../../../assets/amazon.png'
 import { TiShoppingCart } from "react-icons/ti";
 import { motion } from 'framer-motion';
@@ -7,9 +7,11 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const token = localStorage.getItem('token')
   console.log("tokenn", token);
+  const navigate = useNavigate();
 
   const logout =()=>{
     localStorage.removeItem("token")
+    navigate("/")
   }
   return (
    <>

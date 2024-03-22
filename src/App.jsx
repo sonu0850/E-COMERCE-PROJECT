@@ -25,7 +25,6 @@ function App() {
  <>
 
 <TostifyContainer/>
-<RouteGuard/>
 
 {/* <Skeleton count={10} /> */}
 {/* <Skeltont/> */}
@@ -33,6 +32,7 @@ function App() {
  <Navbar/>
 <Suspense fallback={'loading....'}>
 <Routes>
+<Route path='/' element={<Home/>}/>
 <Route path='/' element={<RouteGuard Component={Home}/>}/>
 <Route path='/contact' element={<RouteGuard Component={Contact}/>}/>
 <Route path='/About' element={<RouteGuard Component={About}/>}/>
