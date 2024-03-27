@@ -1,5 +1,5 @@
 
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
 import Navbar from './Components/Header/Header/Navbar'
 import Login from './Components/Header/Auth/Login'
@@ -21,7 +21,7 @@ const  Forgot = lazy(()=> import ('./Components/Header/Auth/Forgot') )
 
 function App() {
  
- 
+ const token = localStorage.getItem("token");
 
   return (
  <>
@@ -33,12 +33,11 @@ function App() {
  <Navbar/>
 <Suspense fallback={<Loader/>}>
 <Routes>
-<Route path='/' element={<Home/>}/>
 <Route path='/' element={<RouteGuard Component={Home}/>}/>
 <Route path='/contact' element={<RouteGuard Component={Contact}/>}/>
 <Route path='/About' element={<RouteGuard Component={About}/>}/>
-<Route path='/Login' element={<LogIn/>}/>
-<Route path='/Signup' element={<SignupForm/>}/>                                                                                                                                                                                                                                                                                                                                                                                
+<Route path='/Login' element={token ? <Navigate to="/" replace={true} /> :<LogIn/>}/>
+<Route path='/Signup' element={token ? <Navigate to="/" replace={true} /> :<SignupForm/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path='/Forget' element={<Forgot/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 
  </Routes>
