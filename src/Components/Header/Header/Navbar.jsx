@@ -17,7 +17,7 @@ const Navbar = () => {
    <>
  <motion.div initial={{y:-10, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:1, duration:1}} className="container-fluid">
 <div className="navbar  flex justify-between px-5 items-center py-3 text-black">
-  <div className="logo"><img src={amazon} alt=""  width={130}/></div>
+  <NavLink to={'/'}><div className="logo"><img src={amazon} alt=""  width={130}/></div></NavLink>
  {token &&  <div className="content flex gap-3">
     <NavLink to='/'><h2>Home</h2></NavLink>
     <NavLink to='/About'><h2>About</h2></NavLink>

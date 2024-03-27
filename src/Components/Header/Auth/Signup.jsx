@@ -44,7 +44,7 @@ const SignupForm = () => {
         .required("Password Required")
         .oneOf([Yup.ref("password"), null], "password not match"),
     }),
-    onSubmit: values => {
+    onSubmit: values  => {
       console.log(values);
       console.log("value", values);
       dispatch(signUp(values))

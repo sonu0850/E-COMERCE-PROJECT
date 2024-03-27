@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import FakeStoreslice, { fakeData } from '../../../Store/FakeStore/FakeStoreslice'
 import { motion } from "framer-motion"
-import Footer from '../Header/Footer/Footer'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -13,7 +12,7 @@ useEffect(()=>{
 },[])
   return (
    <>
-   <motion.div initial={{opacity:0, scale:0.6}} animate={{opacity:1,y:10, scale:1}} transition={{delay:2, duration:1 }} className='grid  grid-cols-1 md:grid-cols-5 justify-center items-center  gap-3 '>
+   <motion.div initial={{opacity:0, scale:0.6}} animate={{opacity:1,y:10, scale:1}} transition={{delay:0.6, duration:1 }} className='grid  grid-cols-1 md:grid-cols-5 justify-center items-center  gap-3 '>
   {Data.map((item, id)=>{
     return(
       <div key={id} className='mt-16'>
@@ -44,7 +43,7 @@ useEffect(()=>{
   })}
 
    </motion.div>
-   {/* <Footer/> */}
+
    </>
   )
 }

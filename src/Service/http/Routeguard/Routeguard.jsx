@@ -18,7 +18,7 @@ const RouteGuard = (props) => {
     
    
   return (
-      login && <Component/>
+      <>  login && <Component/> replace </>
   )
 }
 
