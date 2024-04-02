@@ -64,6 +64,13 @@ export const  Forget =createAsyncThunk("/Forget/authSlice", async(data)=>{
     }
 })
 
+export const CartData = createAsyncThunk('/CartData/authSlice', async(data)=>{
+    return data;
+})
+export const removeCartItem = createAsyncThunk('removeCartItem/authSlice', async(id)=>{
+   
+})
+
 
 
 
@@ -74,7 +81,9 @@ export const  Forget =createAsyncThunk("/Forget/authSlice", async(data)=>{
     name:"authSlice",
     initialState:{
         Data:[],
-        loading: false
+        // Cart:[],
+        loading: false,
+        CartData:[],
     },
     extraReducers(builder){
         builder
@@ -145,6 +154,39 @@ export const  Forget =createAsyncThunk("/Forget/authSlice", async(data)=>{
             state.loading= false
 
         })
+
+    // cart Data
+        .addCase(CartData.pending,(state,action)=>{
+            state.loading= true
+
+        })
+        .addCase(CartData.fulfilled,(state,action)=>{
+           state.CartData = [...state.CartData, action.payload]
+           
+        state.loading = false
+
+
+        })
+        .addCase(CartData.rejected,(state,action)=>{
+            state.loading= false
+
+        })
+    // // REMOVE ITEM FROM CART    
+    //     .addCase(removeCartItem.pending,(state,action)=>{
+    //         state.loading= true
+
+    //     })
+    //     .addCase(removeCartItem.fulfilled,(state,action)=>{
+    //        state.CartData = state.CartData.filter((item)=> item.id !== action.payload.id)
+           
+    //     state.loading = false
+
+
+    //     })
+    //     .addCase(removeCartItem.rejected,(state,action)=>{
+    //         state.loading= false
+
+    //     })
         
     }
 

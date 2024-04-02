@@ -17,9 +17,7 @@ const RouteGuard = (props) => {
    },[token])
     
    
-  return (
-      <>  login && <Component/> replace </>
-  )
+   return <div>{login && <Component />}</div>
 }
 
 export default RouteGuard

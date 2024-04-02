@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { Forget, Login } from "../../../Store/Authciation/Authslice";
 
 const Forgot = () => {
-
+  const navigate = useNavigate();
   const disptach = useDispatch();
 
   const formik = useFormik({

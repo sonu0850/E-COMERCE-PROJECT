@@ -4,6 +4,7 @@ import FakeStoreslice, {
   fakeData,
 } from "../../../Store/FakeStore/FakeStoreslice";
 import { motion } from "framer-motion";
+import { CartData } from "../../../Store/Authciation/Authslice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(fakeData());
   }, []);
+
+  const addToCart =(item)=>{
+    dispatch(CartData(item))
+  }
   return (
     <>
       <motion.div
@@ -24,7 +29,7 @@ const Home = () => {
         transition={{ delay: 0.6, duration: 1 }}
         className="grid  grid-cols-1 md:grid-cols-5 justify-center items-center  gap-3 "
       >
-        {Data.map((item, id) => {
+        {Data.map((item, id) => { 
           return (
             <div key={id} className="mt-16">
               <div className="max-w-sm rounded overflow-hidden shadow-lg ">
@@ -46,7 +51,8 @@ const Home = () => {
                     $ {item.price}
                   </span>
                   <span className="inline-block bg-[#FFD814] rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
-                    <button onClick={()=>setCardData((prev)=>([...prev, item]))}>Add to Card</button>
+                    <button onClick={()=>addToCart(item)}>Add to Card</button>
+                    {/* <button onClick={()=>setCardData((prev)=>([...prev, item]))}>Add to Card</button> */}
                   </span>
                 </div>
               </div>
