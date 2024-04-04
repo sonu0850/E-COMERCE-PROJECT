@@ -64,13 +64,35 @@ export const  Forget =createAsyncThunk("/Forget/authSlice", async(data)=>{
     }
 })
 
+
+// export const  UpdatePassword = createAsyncThunk('UpdatePassword/authSlice', async()=>{
+//     try {
+//         const response = await http.put(`/users/updatePassword`)
+//     } catch (error) {
+        
+//     }
+// })
+
 export const CartData = createAsyncThunk('/CartData/authSlice', async(data)=>{
     return data;
 })
-export const removeCartItem = createAsyncThunk('removeCartItem/authSlice', async(id)=>{
+export const removeCartIt = createAsyncThunk('removeCartItem/authSlice', async(id)=>{
+    return id;
    
 })
 
+// CHANGE PASSWORD 
+export const  upDate = createAsyncThunk('upDate/authSlice', async({values, token})=>{
+    console.log("val pass0", values);
+    console.log("val pass0 token", token);
+    try {
+        const response = await http.put(`users/updatePassword/${token.token}`,{
+            password: values.newpassword,
+        })
+    } catch (error) {
+        
+    }
+})
 
 
 
@@ -161,7 +183,14 @@ export const removeCartItem = createAsyncThunk('removeCartItem/authSlice', async
 
         })
         .addCase(CartData.fulfilled,(state,action)=>{
-           state.CartData = [...state.CartData, action.payload]
+            const findItem = state.CartData.find((item)=> item.id === action.payload.id);
+            if (findItem) {
+                return;
+                
+            } else {
+                
+                state.CartData = [...state.CartData, action.payload]
+            }
            
         state.loading = false
 
@@ -171,22 +200,22 @@ export const removeCartItem = createAsyncThunk('removeCartItem/authSlice', async
             state.loading= false
 
         })
-    // // REMOVE ITEM FROM CART    
-    //     .addCase(removeCartItem.pending,(state,action)=>{
-    //         state.loading= true
+    // REMOVE ITEM FROM CART    
+        .addCase(removeCartIt.pending,(state,action)=>{
+            state.loading= true
 
-    //     })
-    //     .addCase(removeCartItem.fulfilled,(state,action)=>{
-    //        state.CartData = state.CartData.filter((item)=> item.id !== action.payload.id)
+        })
+        .addCase(removeCartIt.fulfilled,(state,action)=>{
+           state.CartData = state.CartData.filter((item, index)=> item.id !== action.payload)
            
-    //     state.loading = false
+        state.loading = false
 
 
-    //     })
-    //     .addCase(removeCartItem.rejected,(state,action)=>{
-    //         state.loading= false
+        })
+        .addCase(removeCartIt.rejected,(state,action)=>{
+            state.loading= false
 
-    //     })
+        })
         
     }
 

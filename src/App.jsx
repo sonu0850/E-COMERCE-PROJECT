@@ -12,6 +12,7 @@ import About from './Components/Header/Dashboard/About'
 import TostifyContainer from './Service/http/Toasify/TostifyContainer'
 import { Suspense, lazy } from 'react'
 import Cart from './Components/Header/Dashboard/AddToCart'
+import ChangePassword from './Components/Header/Auth/UpdatePassword'
 const RouteGuard = lazy(()=> import ('./Service/http/Routeguard/Routeguard'  )) 
 const  Loader = lazy(()=> import ('./Service/http/Loader/Loader')) 
 const  Forgot = lazy(()=> import ('./Components/Header/Auth/Forgot') )  
@@ -35,13 +36,14 @@ function App() {
 <Suspense fallback={<Loader/>}>
 <Routes>
 <Route path='/' element={<Home/>}/>
-<Route path='/' element={<RouteGuard Component={Home}/>}/>
+{/* <Route path='/' element={<RouteGuard Component={Home}/>}/> */}
 <Route path='/contact' element={<RouteGuard Component={Contact}/>}/>
 <Route path='/About' element={<RouteGuard Component={About}/>}/>
 <Route path='/Login' element={token ? <Navigate to="/" replace={true} /> :<LogIn/>}/>
 <Route path='/Signup' element={token ? <Navigate to="/" replace={true} /> :<SignupForm/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path='/Forget' element={<Forgot/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path='/Cart' element={<Cart/>}/>                                                                                                                                                                                                                                                                                                                                                                                
+<Route path="/updatePassword/:token"  element={<ChangePassword/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 
  </Routes>
 </Suspense>

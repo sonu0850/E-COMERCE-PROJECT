@@ -5,13 +5,12 @@ import FakeStoreslice, {
 } from "../../../Store/FakeStore/FakeStoreslice";
 import { motion } from "framer-motion";
 import { CartData } from "../../../Store/Authciation/Authslice";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const [cardData, setCardData] = useState([])
 
-  console.log("card data", cardData);
-  console.log("card length", cardData.length);
+  const dispatch = useDispatch();
+  const [cartshow, setcartshow] = useState(false)
   const Data = useSelector((state) => state.fakestore.Data);
 
   useEffect(() => {
@@ -20,6 +19,7 @@ const Home = () => {
 
   const addToCart =(item)=>{
     dispatch(CartData(item))
+    setcartshow(true)
   }
   return (
     <>
@@ -46,12 +46,15 @@ const Home = () => {
                     {/* {item.description} */}
                   </p>
                 </div>
-                <div className="px-6 pt-4 pb-2">
-                  <span className="inline-block bg-[#FFA41C] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <div className="px-6 pt-4 pb-2 text-white">
+                  <span className="inline-block text-white bg-[#e96d4e] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                     $ {item.price}
                   </span>
-                  <span className="inline-block bg-[#FFD814] rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
-                    <button onClick={()=>addToCart(item)}>Add to Card</button>
+                  <span className="inline-block text-white bg-[#3859c4] rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                   {cartshow ? <NavLink to='/Cart'><button >View Cart</button></NavLink> : <button onClick={()=>addToCart(item)}>Add to Card</button>  }
+                   
+                    
+                    
                     {/* <button onClick={()=>setCardData((prev)=>([...prev, item]))}>Add to Card</button> */}
                   </span>
                 </div>
