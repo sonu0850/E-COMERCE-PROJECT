@@ -89,8 +89,13 @@ export const  upDate = createAsyncThunk('upDate/authSlice', async({values, token
         const response = await http.put(`users/updatePassword/${token.token}`,{
             password: values.newpassword,
         })
+        console.log("update",response);
+        if (response.data.success=== true) {
+            return response.data
+            
+        } 
     } catch (error) {
-        
+        return error.response.data
     }
 })
 
@@ -213,6 +218,29 @@ export const  upDate = createAsyncThunk('upDate/authSlice', async({values, token
 
         })
         .addCase(removeCartIt.rejected,(state,action)=>{
+            state.loading= false
+
+        })
+
+        // UPDATE PASSWORD
+        .addCase(upDate.pending,(state,action)=>{
+            state.loading= true
+
+        })
+        .addCase(upDate.fulfilled,(state,action)=>{
+           console.log(" upload aciton", action);
+           if (action.payload.success === true) {
+            Toastify({value:true, msg:action.payload.message})
+            
+        } else {
+            Toastify({value:false, msg:action.payload.data.message})
+            
+        }
+        state.loading = false
+
+
+        })
+        .addCase(upDate.rejected,(state,action)=>{
             state.loading= false
 
         })

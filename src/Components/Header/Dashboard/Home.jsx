@@ -10,7 +10,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 const Home = () => {
 
   const dispatch = useDispatch();
-  const [cartshow, setcartshow] = useState(false)
+  
   const Data = useSelector((state) => state.fakestore.Data);
 
   useEffect(() => {
@@ -51,7 +51,8 @@ const Home = () => {
                     $ {item.price}
                   </span>
                   <span className="inline-block text-white bg-[#3859c4] rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
-                   {cartshow ? <NavLink to='/Cart'><button >View Cart</button></NavLink> : <button onClick={()=>addToCart(item)}>Add to Card</button>  }
+                   {/* <button >View Cart</button>  */}
+                    <button onClick={()=>addToCart(item)}>Add to Card</button>  
                    
                     
                     

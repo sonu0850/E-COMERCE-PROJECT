@@ -4,9 +4,10 @@ import * as Yup from "yup";
 import update from './../../../assets/updatepass.png'
 import { useDispatch } from "react-redux";
 import { upDate } from "../../../Store/Authciation/Authslice";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useNavigationType, useParams } from "react-router-dom";
 
 const ChangePassword = () => {
+  const navigate = useNavigate()
   const token = useParams();
   console.log("token", token);
   const dispatch = useDispatch()
@@ -28,9 +29,17 @@ const ChangePassword = () => {
         .required("Password Required")
         .oneOf([Yup.ref("newpassword"), null], "password not match"),
     }),
-    onSubmit: (values) => {
+    onSubmit: (values, {resetForm}) => {
       console.log("valueswwwwwwwwwwwwwwwwwww ", values, );
-      dispatch(upDate({values:values, token:token}))
+      dispatch(upDate({values:values, token:token})).unwrap().then((res)=>{
+        if (res.success === true) {
+          resetForm()
+          navigate('/Login')
+        } else {
+          
+        }
+        console.log("unwarap resppp++", res);
+      })
       
     },
   });
