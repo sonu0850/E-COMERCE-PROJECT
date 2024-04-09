@@ -105,7 +105,7 @@ const Cart = () => {
                     <div className="flex justify-between">
                       <p className="text-lg font-bold">Total</p>
                       <div className="">
-                        <p className="mb-1 text-lg font-bold">$134.98 </p>
+                        <p className="mb-1 text-lg font-bold">$134.98 USD</p>
                    
                       </div>
                     </div>
