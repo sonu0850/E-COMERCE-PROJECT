@@ -6,44 +6,50 @@ import FakeStoreslice, {
 import { motion } from "framer-motion";
 import { CartData } from "../../../Store/Authciation/Authslice";
 import { NavLink, useNavigate } from "react-router-dom";
+import Pizza from "./Pizza";
+
 
 const Home = () => {
+  const [cartshow, setcartshow] = useState(false)
 
   const dispatch = useDispatch();
   
   const Data = useSelector((state) => state.fakestore.Data);
+  console.log("home pizza", Data);
 
   useEffect(() => {
-    dispatch(fakeData());
+    dispatch(fakeData(Pizza));
+    
   }, []);
 
   const addToCart =(item)=>{
     dispatch(CartData(item))
     setcartshow(true)
   }
+  
   return (
     <>
       <motion.div
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, y: 10, scale: 1 }}
         transition={{ delay: 0.6, duration: 1 }}
-        className="grid  grid-cols-1 md:grid-cols-5 justify-center items-center  gap-3 "
+        className="grid  grid-cols-1 md:grid-cols-4 justify-center items-center  gap-3  "
       >
         {Data.map((item, id) => { 
           return (
-            <div key={id} className="mt-16">
+            <div key={id} className="mt-2 ms-2">
               <div className="max-w-sm rounded overflow-hidden shadow-lg ">
                 <img
-                  className="w-full h-[300px]  object-contain" // Adjust width, height, and object-fit as needed
-                  src={item.image}
+                  className="w-full h-auto  object-contain" // Adjust width, height, and object-fit as needed
+                  src={item.image_url}
                   alt="Product"
                 />
-                <div className="px-6 py-4">
+                <div className="px-6 py-2">
                   <div className="font-bold text-sm mb-2">
-                    {item.title.slice(0, 15)}...
+                    {item.name.slice(0, 15)}...
                   </div>
                   <p className="text-gray-700 text-base">
-                    {/* {item.description} */}
+                    {/* {item.description} * */}
                   </p>
                 </div>
                 <div className="px-6 pt-4 pb-2 text-white">

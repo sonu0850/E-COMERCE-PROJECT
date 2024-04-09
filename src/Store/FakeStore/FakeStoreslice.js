@@ -1,11 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
-export const fakeData  = createAsyncThunk('fakeData/fakestore', async()=>{
+import axios from "axios";
+import Pizza from "../../Components/Header/Dashboard/Pizza";
+
+export const fakeData  = createAsyncThunk('fakeData/fakestore', async(Pizza)=>{
+    console.log("pizza", Pizza);
     try {
-        const response = await axios.get('https://fakestoreapi.com/products')
-        console.log("response", response);
-return response.data
+       
+        
+return Pizza
     } catch (error) {
         
     }
@@ -25,6 +28,7 @@ return response.data
 
         })
         .addCase(fakeData.fulfilled,(state,action)=>{
+            console.log("action piza", action);
             state.loading= false
             state.Data = action.payload
 

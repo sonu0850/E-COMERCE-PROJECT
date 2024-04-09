@@ -12,7 +12,9 @@ import About from './Components/Header/Dashboard/About'
 import TostifyContainer from './Service/http/Toasify/TostifyContainer'
 import { Suspense, lazy } from 'react'
 import Cart from './Components/Header/Dashboard/AddToCart'
-import ChangePassword from './Components/Header/Auth/UpdatePassword'
+import Pizza from './Components/Header/Dashboard/Pizza'
+const ChangePassword = lazy(()=> import ('./Components/Header/Auth/UpdatePassword')) 
+const Chatapp = lazy(()=> import  ('./Components/Header/Dashboard/Chatap')) 
 const RouteGuard = lazy(()=> import ('./Service/http/Routeguard/Routeguard'  )) 
 const  Loader = lazy(()=> import ('./Service/http/Loader/Loader')) 
 const  Forgot = lazy(()=> import ('./Components/Header/Auth/Forgot') )  
@@ -27,6 +29,7 @@ function App() {
 
   return (
  <>
+
 <TostifyContainer/>
 
 {/* <Skeleton count={10} /> */}
@@ -43,6 +46,7 @@ function App() {
 <Route path='/Signup' element={token ? <Navigate to="/" replace={true} /> :<SignupForm/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path='/Forget' element={<Forgot/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path='/Cart' element={<Cart/>}/>                                                                                                                                                                                                                                                                                                                                                                                
+<Route path='/Chat' element={<Chatapp/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path="/updatePassword/:token"  element={<ChangePassword/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 
  </Routes>
