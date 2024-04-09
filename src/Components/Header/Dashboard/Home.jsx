@@ -54,10 +54,10 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="px-6 pt-4 pb-2 text-white">
-                  <span className="inline-block text-white bg-[#e96d4e] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  <span className="inline-block text-white bg-[#e96d4e] rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
                     $ {item.price}
                   </span>
-                  <span className="inline-block text-white bg-[#3859c4] rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                  <span className="inline-block text-white bg-[#3859c4] rounded-full px-3 py-1 text-sm font-semibold  mr-2 mb-2">
                    {/* <button >View Cart</button>  */}
                     <button onClick={()=>addToCart(item)}>{Cartfind.find((cartitem)=> cartitem.id === item.id)? <NavLink to="/Cart" >view cart</NavLink> : "add to Cart"}</button>  
                    

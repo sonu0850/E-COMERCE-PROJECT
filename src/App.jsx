@@ -13,6 +13,7 @@ import TostifyContainer from './Service/http/Toasify/TostifyContainer'
 import { Suspense, lazy } from 'react'
 import Cart from './Components/Header/Dashboard/AddToCart'
 import Pizza from './Components/Header/Dashboard/Pizza'
+import Checkout from './Components/Header/Dashboard/Checkout'
 const ChangePassword = lazy(()=> import ('./Components/Header/Auth/UpdatePassword')) 
 const Chatapp = lazy(()=> import  ('./Components/Header/Dashboard/Chatap')) 
 const RouteGuard = lazy(()=> import ('./Service/http/Routeguard/Routeguard'  )) 
@@ -48,6 +49,7 @@ function App() {
 <Route path='/Cart' element={<Cart/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path='/Chat' element={<Chatapp/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path="/updatePassword/:token"  element={<ChangePassword/>}/>                                                                                                                                                                                                                                                                                                                                                                                
+<Route path="/Checkout"  element={<Checkout/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 
  </Routes>
 </Suspense>
