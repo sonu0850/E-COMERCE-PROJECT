@@ -3,6 +3,7 @@ import axios from "axios";
 import http from '../../Service/http/base_url'
 
 import  { Toastify } from "../../Service/http/Toasify/TostifyContainer";
+import { useEffect } from "react";
 
 export const  signUp=createAsyncThunk("/authSlice/signUp",async(value)=>{
     console.log("sign val ", value);
@@ -73,13 +74,7 @@ export const  Forget =createAsyncThunk("/Forget/authSlice", async(data)=>{
 //     }
 // })
 
-export const CartData = createAsyncThunk('/CartData/authSlice', async(data)=>{
-    return data;
-})
-export const removeCartIt = createAsyncThunk('removeCartItem/authSlice', async(id)=>{
-    return id;
-   
-})
+
 
 // CHANGE PASSWORD 
 export const  upDate = createAsyncThunk('upDate/authSlice', async({values, token})=>{
@@ -99,6 +94,26 @@ export const  upDate = createAsyncThunk('upDate/authSlice', async({values, token
     }
 })
 
+// CART DATA
+export const CartData = createAsyncThunk('/CartData/authSlice', async(data)=>{
+    return data;
+})
+
+
+// REMOVE ITEM FROM CART
+export const removeCartIt = createAsyncThunk('removeCartItem/authSlice', async(id)=>{
+    return id;
+   
+})
+
+// PROCEED TO CHECKOUT PAYMENT PAGE 
+
+export const proceedCheckOut = createAsyncThunk('proceedCheckOut/authSlice', async(finalprice)=>{
+console.log("prrr", finalprice);
+    return finalprice;
+   
+})
+
 
 
 
@@ -107,10 +122,12 @@ export const  upDate = createAsyncThunk('upDate/authSlice', async({values, token
  const authSlice = createSlice({
     name:"authSlice",
     initialState:{
-        Data:[],
+      
         // Cart:[],
         loading: false,
         CartData:[],
+        Checkout:[],
+
     },
     extraReducers(builder){
         builder
@@ -241,6 +258,25 @@ export const  upDate = createAsyncThunk('upDate/authSlice', async({values, token
 
         })
         .addCase(upDate.rejected,(state,action)=>{
+            state.loading= false
+
+        })
+
+
+        // FINAL PROCCED TO CHECKOUT
+        .addCase(proceedCheckOut.pending,(state,action)=>{
+            state.loading= true
+
+        })
+        .addCase(proceedCheckOut.fulfilled, (state, action) => {
+            console.log("action proceed", action.payload);
+            state.Checkout = action.payload;
+          
+            state.loading = false;
+      
+
+        })
+        .addCase(proceedCheckOut.rejected,(state,action)=>{
             state.loading= false
 
         })

@@ -10,6 +10,10 @@ import Pizza from "./Pizza";
 
 
 const Home = () => {
+  const navigate = useNavigate()
+
+  const token = localStorage.getItem('token')
+  
   const [cartshow, setcartshow] = useState(false)
   const Cartfind = useSelector((state) => state.authSlice.CartData);
 
@@ -59,8 +63,7 @@ const Home = () => {
                   </span>
                   <span className="inline-block text-white bg-[#3859c4] rounded-full px-3 py-1 text-sm font-semibold  mr-2 mb-2">
                    {/* <button >View Cart</button>  */}
-                    <button onClick={()=>addToCart(item)}>{Cartfind.find((cartitem)=> cartitem.id === item.id)? <NavLink to="/Cart" >view cart</NavLink> : "add to Cart"}</button>  
-                   
+                   <button onClick={()=>addToCart(item)}>{Cartfind.find((cartitem)=> cartitem.id === item.id)? <NavLink to="/Cart" >view cart</NavLink> : "add to Cart"}</button> 
                     
                     
                     {/* <button onClick={()=>setCardData((prev)=>([...prev, item]))}>Add to Card</button> */}

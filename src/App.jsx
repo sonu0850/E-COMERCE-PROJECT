@@ -6,14 +6,16 @@ import Login from './Components/Header/Auth/Login'
 import Home from './Components/Header/Dashboard/Home'
 import SignupForm from './Components/Header/Auth/Signup'
 import LogIn from './Components/Header/Auth/Login'
-import Navbartwo from './Components/Header/Header/Navbartwo'
+
 import Contact from './Components/Header/Dashboard/Contact'
-import About from './Components/Header/Dashboard/About'
+
 import TostifyContainer from './Service/http/Toasify/TostifyContainer'
 import { Suspense, lazy } from 'react'
 import Cart from './Components/Header/Dashboard/AddToCart'
 import Pizza from './Components/Header/Dashboard/Pizza'
 import Checkout from './Components/Header/Dashboard/Checkout'
+import CartC from './Components/Header/Dashboard/Checkout'
+import AboutPage from './Components/Header/Dashboard/AboutPage'
 const ChangePassword = lazy(()=> import ('./Components/Header/Auth/UpdatePassword')) 
 const Chatapp = lazy(()=> import  ('./Components/Header/Dashboard/Chatap')) 
 const RouteGuard = lazy(()=> import ('./Service/http/Routeguard/Routeguard'  )) 
@@ -42,7 +44,7 @@ function App() {
 <Route path='/' element={<Home/>}/>
 {/* <Route path='/' element={<RouteGuard Component={Home}/>}/> */}
 <Route path='/contact' element={<RouteGuard Component={Contact}/>}/>
-<Route path='/About' element={<RouteGuard Component={About}/>}/>
+<Route path='/About' element={<RouteGuard Component={AboutPage}/>}/>
 <Route path='/Login' element={token ? <Navigate to="/" replace={true} /> :<LogIn/>}/>
 <Route path='/Signup' element={token ? <Navigate to="/" replace={true} /> :<SignupForm/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path='/Forget' element={<Forgot/>}/>                                                                                                                                                                                                                                                                                                                                                                                
@@ -50,6 +52,7 @@ function App() {
 <Route path='/Chat' element={<Chatapp/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path="/updatePassword/:token"  element={<ChangePassword/>}/>                                                                                                                                                                                                                                                                                                                                                                                
 <Route path="/Checkout"  element={<Checkout/>}/>                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                            
 
  </Routes>
 </Suspense>

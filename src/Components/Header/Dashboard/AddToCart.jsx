@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCartIt } from "../../../Store/Authciation/Authslice";
+import { proceedCheckOut, removeCartIt } from "../../../Store/Authciation/Authslice";
+import {useNavigate} from 'react-router-dom'
 import Checkout from "./Checkout";
 
 const Cart = () => {
+  const navigate = useNavigate()
   const myData = useSelector((state) => state.authSlice.CartData);
   const [qunatity, setQuantity] = useState(myData.map((item) => ({
     itemId: item.id,
@@ -35,7 +37,15 @@ const Cart = () => {
   }, 0);
 
   const subtotal = subtotalMin.toFixed(2)
-  
+
+
+  const proceedtocheckout =(finalprice)=>{
+    console.log("chl rha ");
+    dispatch(proceedCheckOut(finalprice))
+    navigate("/Checkout")
+  }
+
+ 
 
   return (
     <>
@@ -121,7 +131,7 @@ const Cart = () => {
                   </p>
                 </div>
               </div>
-              <button className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+              <button onClick={()=>proceedtocheckout(subtotal)} className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
                 Proceed To Buy
               </button>
             </div>
@@ -132,7 +142,7 @@ const Cart = () => {
           <h2>Your Cart Is Empty</h2>
         </div>
       )}
-      <Checkout/>
+      
     </>
   );
 };
