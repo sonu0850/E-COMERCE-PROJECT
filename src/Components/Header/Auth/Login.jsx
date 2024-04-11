@@ -46,7 +46,7 @@ localStorage.setItem('token', res.token)
     <>
     <motion.div initial={{x:-1300, opacity:0}} animate={{x:0, opacity:1}} transition={{delay:0.5, duration:1}}  className="signup md:flex md:justify-center md:items-center">
         <div className="leftimage">
-          <img className=' w-[600px] h-[700px]' src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=1800&t=st=1710499310~exp=1710499910~hmac=fab216093021bf3759d22cdc94a7666d2708b8f6b5ff99900b8fd6888b78eed1" alt=""   />
+          <img className=' w-[600px] h-[700px]' src="https://tailwindcomponents.com/svg/secure-login-animate.svg" alt=""   />
         </div>
         <div className="form">
           <h2 className='text-6xl'>Log In</h2>
@@ -91,10 +91,10 @@ localStorage.setItem('token', res.token)
 
       <NavLink to='/Forget' className='text-blue-500'> Forget Password</NavLink>
       <div className="btnatuh flex gap-4">
-      <button type="submit" className="mt-4 bg-[#EA4C89] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded md:w-full">
+      <button type="submit" className="mt-4 bg-[#0ED3CF] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded md:w-full">
         Submit
       </button>
-      <NavLink to='/Signup'><button type="submit" className="mt-4 bg-[#EA4C89] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <NavLink to='/Signup'><button type="submit" className="mt-4 bg-[#0ED3CF] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Sign Up
       </button></NavLink>
       </div>

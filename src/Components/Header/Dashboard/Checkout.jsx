@@ -1,5 +1,6 @@
 import React from 'react'
 import {  useSelector } from "react-redux";
+import Shiping from './Shiping';
 
 const Checkout = () => {
   const finalPriceData = useSelector((state) => state.authSlice.Checkout)
@@ -13,8 +14,8 @@ console.log("finalPriceData", finalPriceData);
   
   <>
   <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
-    <a href="#" className="text-2xl font-bold text-gray-800">
-      sneekpeeks
+    <a href="#" className="text-2xl font-bold text-gray-800 text-center">
+    Order Summary
     </a>
     <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
       <div className="relative">
@@ -64,10 +65,11 @@ console.log("finalPriceData", finalPriceData);
   </div>
   <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
     <div className="px-4 pt-8">
-      <p className="text-xl font-medium">Order Summary</p>
-      <p className="text-gray-400">
-        Check your items. And select a suitable shipping method.
+      {/* <p className="text-xl font-medium">Order Summary</p> */}
+      <p className="text-gray-400 text-center text-2xl">
+        Shipping Address
       </p>
+      <Shiping/>
      
       
     </div>
@@ -231,7 +233,7 @@ console.log("finalPriceData", finalPriceData);
           <p className="text-2xl font-semibold text-gray-900">${finalPriceData}</p>
         </div>
       </div>
-      <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+      <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-2 font-medium text-white">
         Place Order
       </button>
     </div>

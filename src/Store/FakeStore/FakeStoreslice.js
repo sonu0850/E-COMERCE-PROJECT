@@ -1,18 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import axios from "axios";
-import Pizza from "../../Components/Header/Dashboard/Pizza";
 
-export const fakeData  = createAsyncThunk('fakeData/fakestore', async(Pizza)=>{
+
+export const fakeData = createAsyncThunk('fakeData/fakestore', async (Pizza, thunkAPI) => {
     console.log("pizza", Pizza);
     try {
-       
-        
-return Pizza
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(Pizza);
+            }, 2000); // 3 seconds delay
+        });
     } catch (error) {
-        
+        // Handle error if needed
     }
-})
+});
 
 
  const FakeStore = createSlice({

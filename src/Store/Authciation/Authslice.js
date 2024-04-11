@@ -166,6 +166,7 @@ console.log("prrr", finalprice);
             
         } else {
             Toastify({value:false, msg:action.payload.message})
+           
             
         }
         state.loading = false

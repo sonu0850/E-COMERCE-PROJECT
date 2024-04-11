@@ -16,6 +16,7 @@ import Pizza from './Components/Header/Dashboard/Pizza'
 import Checkout from './Components/Header/Dashboard/Checkout'
 import CartC from './Components/Header/Dashboard/Checkout'
 import AboutPage from './Components/Header/Dashboard/AboutPage'
+import Shiping from './Components/Header/Dashboard/Shiping'
 const ChangePassword = lazy(()=> import ('./Components/Header/Auth/UpdatePassword')) 
 const Chatapp = lazy(()=> import  ('./Components/Header/Dashboard/Chatap')) 
 const RouteGuard = lazy(()=> import ('./Service/http/Routeguard/Routeguard'  )) 
