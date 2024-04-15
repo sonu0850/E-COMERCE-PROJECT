@@ -39,7 +39,7 @@ const Home = () => {
     dispatch(CartData(item))
     } else {
       Toastify({value:false, msg:"Please Login First"})
-      navigate("/Login")
+      // navigate("/Login")
     }
 
     // setcartshow(true)

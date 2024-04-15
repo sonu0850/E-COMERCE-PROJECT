@@ -2,16 +2,38 @@ import React, { useEffect, useState } from "react";
 
 
 const Chatapp = () => {
-    useEffect(()=>{
+  const [Input, setInput] = useState('')
+  console.log("input", Input);
+  const data = [
+    {
+      name:"sonu",
+      age:25,
+    },
+    {
+      name:"risav",
+      age:25,
+    },
+    {
+      name:"rahul",
+      age:25,
+    },
+  ]
+  const handlechange =(e)=>{
+    
+    const filterdata = data.filter((item)=> item.name  ===e.target.value)
+    console.log("filterdata", filterdata);
+  }
+  //   useEffect(()=>{
 
-    },[ ])
-  const [showhide, setshowhide] = useState(false);
-  const showuser = () => {
-    console.log("show userrrr");
-    setshowhide(!showhide);
-  };
+  //   },[ ])
+  // const [showhide, setshowhide] = useState(false);
+  // const showuser = () => {
+  //   console.log("show userrrr");
+  //   setshowhide(!showhide);
+  // };
   return (
-    <div className=" flex flex-col sm:flex-row  justify-evenly  ">
+    <>
+    {/* <div className=" flex flex-col sm:flex-row  justify-evenly  ">
       <div className={showhide ? 'block' : "hidden md:block"} onClick={showuser} >
         <div className="chatbox flex  justify-evenly text-red-400">
           <div>
@@ -54,7 +76,12 @@ const Chatapp = () => {
         </div>
       </div>
       </div>
-    </div>
+    </div> */}
+
+
+    <h1>Input</h1>
+    <input type="text" placeholder="Name" onChange={handlechange} />
+    </>
   );
 };
 

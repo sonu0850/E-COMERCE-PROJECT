@@ -9,10 +9,10 @@ export const fakeData = createAsyncThunk('fakeData/fakestore', async (Pizza, thu
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve(Pizza);
-            }, 2000); // 3 seconds delay
+            }, 1000); 
         });
     } catch (error) {
-        // Handle error if needed
+        
     }
 });
 

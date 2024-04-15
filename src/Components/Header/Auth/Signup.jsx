@@ -55,7 +55,7 @@ const SignupForm = () => {
     <>
     <motion.div initial={{y:-1300, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:1, duration:1}}  className="signup md:flex md:justify-center md:items-center">
         <div className="leftimage">
-          <img className=' w-[600px] h-[700px]' src="https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-3875.jpg?w=740&t=st=1710500827~exp=1710501427~hmac=0e0a7dc3dd3c16e4395e8e54d26ecb2c940c1066f084b22b4eee1754c09b94bc" alt=""   />
+          <img className=' w-[600px] h-[600px]' src="https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-3875.jpg?w=740&t=st=1710500827~exp=1710501427~hmac=0e0a7dc3dd3c16e4395e8e54d26ecb2c940c1066f084b22b4eee1754c09b94bc" alt=""   />
         </div>
         <div className="form">
           <h2 className='text-6xl'>Sign Up</h2>

@@ -44,9 +44,11 @@ localStorage.setItem('token', res.token)
 
   return (
     <>
-    <motion.div initial={{x:-1300, opacity:0}} animate={{x:0, opacity:1}} transition={{delay:0.5, duration:1}}  className="signup md:flex md:justify-center md:items-center">
+    <motion.div 
+    initial={{ opacity:0 ,scale:0}} animate={{ opacity:1, scale:1}} transition={{delay:0.5, duration:1}}
+      className="signup md:flex md:justify-center md:items-center">
         <div className="leftimage">
-          <img className=' w-[600px] h-[700px]' src="https://tailwindcomponents.com/svg/secure-login-animate.svg" alt=""   />
+          <img className=' w-[550px] h-[600px]' src="https://tailwindcomponents.com/svg/secure-login-animate.svg" alt=""   />
         </div>
         <div className="form">
           <h2 className='text-6xl'>Log In</h2>

@@ -2,9 +2,13 @@ import { createAsyncThunk, createSlice, isAsyncThunkAction } from "@reduxjs/tool
 import axios from "axios";
 import http from '../../Service/http/base_url'
 
+
 import  { Toastify } from "../../Service/http/Toasify/TostifyContainer";
 import { useEffect } from "react";
 
+
+
+// SIGN UP
 export const  signUp=createAsyncThunk("/authSlice/signUp",async(value)=>{
     console.log("sign val ", value);
  try{
@@ -33,6 +37,7 @@ export const  signUp=createAsyncThunk("/authSlice/signUp",async(value)=>{
 })
 
 
+// LOG IN 
 
 export const  Login=createAsyncThunk("/authSlice/Login",async(value)=>{
     console.log("sign val ", value);
@@ -51,6 +56,7 @@ export const  Login=createAsyncThunk("/authSlice/Login",async(value)=>{
 
  }
 })
+// FORGET PASSWORD 
 
 export const  Forget =createAsyncThunk("/Forget/authSlice", async(data)=>{
     console.log("dddd", data);
@@ -137,9 +143,11 @@ console.log("prrr", finalprice);
 
         })
         .addCase(signUp.fulfilled,(state,action)=>{
+        
          state.loading = false
         if (action.payload.success ===true) {
             Toastify({value:true, msg:action.payload.message})
+         
             
         } else {
             Toastify({value:false, msg:action.payload.message})

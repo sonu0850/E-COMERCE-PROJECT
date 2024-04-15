@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { proceedCheckOut, removeCartIt } from "../../../Store/Authciation/Authslice";
 import {useNavigate} from 'react-router-dom'
 import Checkout from "./Checkout";
+import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
   const navigate = useNavigate()
@@ -11,6 +12,7 @@ const Cart = () => {
     itemId: item.id,
     quantity: 1
   })));
+  console.log("quaaa", qunatity);
   const dispatch = useDispatch();
 
   const removeCartItem = (id) => {
@@ -138,8 +140,8 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div className="emptycart text-center text-lg font-extrabold">
-          <h2>Your Cart Is Empty</h2>
+        <div className="emptycart mb-[10px] text-center text-lg font-extrabold ">
+        <EmptyCart/>
         </div>
       )}
       

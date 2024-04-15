@@ -13,8 +13,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const logout =()=>{
-    localStorage.removeItem("token")
-    navigate("/")
+    localStorage.removeItem("token");
+    navigate("/");
   }
 
   const addtocard =()=>{
@@ -22,19 +22,20 @@ const Navbar = () => {
   }
   return (
    <>
- <motion.div initial={{y:-10, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:1, duration:1}} className="container-fluid">
+ <div  className="container-fluid">
 <div className="navbar  flex justify-between px-5 items-center py-1 text-black">
   <NavLink to={'/'}><div className="logo"><img src="https://sharpsheets.io/wp-content/uploads/2023/04/dominos_social_logo-1024x1024.jpg" alt=""  width={130}/></div></NavLink>
  {token &&  <div className="content flex gap-9 text-xl font-semibold">
     <NavLink to='/'><h2>Home</h2></NavLink>
     <NavLink to='/About'><h2>About</h2></NavLink>
     <NavLink to='/contact'><h2>Contact Us</h2></NavLink>
-    <NavLink to='/contact'><h2>Services</h2></NavLink>
+    <NavLink to='/Service'><h2>Services</h2></NavLink>
   
 
   </div>}
   <div className="btn flex gap-3 items-center">
- {token ? <NavLink to='/Login'> <button className='p-1 rounded-xl px-3 text-white  bg-black' onClick={logout}>Log Out</button></NavLink> : <NavLink to='/Login'> <button className='p-1 rounded-xl px-3 text-white  bg-black'>Log In</button></NavLink>}
+ {token ? <button className='p-1 rounded-xl px-3 text-white  bg-black' onClick={()=>logout()}>Log Outdd</button> : 
+  <button className='p-1 rounded-xl px-3 text-white  bg-black' onClick={()=> navigate("/Login")} >Log In</button>}
  
  {token && <span onClick={addtocard} className="relative inline-block">
  <TiShoppingCart className='text-3xl' />
@@ -43,7 +44,7 @@ const Navbar = () => {
           {/* <NavLink to="/Signup">  <button className='p-1 rounded-xl text-white  bg-black'>Sign Up</button></NavLink> */}
   </div>
 </div>
- </motion.div>
+ </div>
    </> 
    
     

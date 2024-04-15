@@ -1,14 +1,19 @@
 import React from 'react'
 import {  useSelector } from "react-redux";
+import {useNavigate} from "react-router-dom"
 import Shiping from './Shiping';
 
 const Checkout = () => {
   const finalPriceData = useSelector((state) => state.authSlice.Checkout)
 
+const navigate = useNavigate()
 console.log("finalPriceData", finalPriceData);
 // );
 //   console.log("finalprice", finalprice);
    
+const orderConform =()=>{
+  navigate("/Order")
+}
   return (
   <>
   
@@ -233,7 +238,7 @@ console.log("finalPriceData", finalPriceData);
           <p className="text-2xl font-semibold text-gray-900">${finalPriceData}</p>
         </div>
       </div>
-      <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-2 font-medium text-white">
+      <button onClick={orderConform} className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-2 font-medium text-white">
         Place Order
       </button>
     </div>
